@@ -61,34 +61,3 @@ class Room:
         ax.set_title("Environment de la pièce")
         ax.grid(True, linestyle='--', alpha=0.6)
 
-# --- ZONE DE TEST ---
-
-# 1. Définissons une pièce en forme de 'L'
-# Imagine une pièce de 10x10 avec un coin coupé
-shape_L = [(0, 0), (10, 0), (10, 5), (5, 5), (5, 10), (0, 10)]
-
-my_room = Room(shape_L)
-
-# 2. Préparons le graphique
-fig, ax = plt.subplots(figsize=(8, 8))
-
-# 3. Dessinons la pièce
-my_room.plot_room(ax)
-
-# 4. Testons si notre fonction "is_point_inside" marche
-# Prenons quelques points tests
-test_points = [
-    (2, 2),   # Dedans
-    (8, 2),   # Dedans
-    (8, 8),   # Dehors (dans le creux du L)
-    (-1, 5),  # Dehors
-    (5, 5)    # Sur le bord (souvent considéré dedans)
-]
-
-for tp in test_points:
-    inside = my_room.is_point_inside(tp)
-    color = 'green' if inside else 'red'
-    # On dessine le point test
-    ax.plot(tp[0], tp[1], marker='o', color=color, markersize=10)
-
-plt.show()
