@@ -1,0 +1,2 @@
+timestamp,selection_type,num_cameras,pop_size,generations,fov,radius,mutation_rate,mutation_strength,elitism_strategy,crossover_type,final_max_score,final_min_score,final_avg_score,final_std_score,num_sample_points,camera_positions
+2025-12-08 08:37:15,Roulette Wheel,3,50,3000,45,6,0.1,1.0,Top 50%,Uniform,62.33333333333333,51.66666666666667,60.98666666666666,2.5793711550599974,300,"C1(x=3.77,y=0.09,angle=112.05); C2(x=9.89,y=3.78,angle=202.28); C3(x=4.76,y=4.04,angle=111.70)"

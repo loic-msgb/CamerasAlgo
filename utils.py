@@ -103,6 +103,9 @@ def run_genetic_algorithm(
     # Génération 0
     population = [Individual(room, num_cameras, fov, radius) for _ in range(pop_size)]
     best_scores = []
+    min_scores = []
+    avg_scores = []
+    std_scores = []
     best_individual = None
     best_fitness = -1.0
 
@@ -120,7 +123,12 @@ def run_genetic_algorithm(
             best_fitness = population[0].fitness
             best_individual = population[0]
 
+        # Calcul des statistiques de la population
+        fitness_values = [ind.fitness for ind in population]
         best_scores.append(population[0].fitness)
+        min_scores.append(min(fitness_values))
+        avg_scores.append(np.mean(fitness_values))
+        std_scores.append(np.std(fitness_values))
 
         # C. Nouvelle génération
         survivors_count = pop_size // 2  # meilleure moitié
@@ -141,4 +149,12 @@ def run_genetic_algorithm(
 
         population = next_gen
 
-    return best_individual, best_scores
+    # Créer un dictionnaire avec toutes les statistiques
+    stats = {
+        'best_scores': best_scores,
+        'min_scores': min_scores,
+        'avg_scores': avg_scores,
+        'std_scores': std_scores
+    }
+    
+    return best_individual, stats
